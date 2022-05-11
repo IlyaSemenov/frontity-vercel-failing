@@ -1,80 +1,85 @@
-# my-first-frontity-project
+# Showcase of Frontity not deploying to Vercel since May 2022
 
-This project was bootstrapped with [Frontity](https://frontity.org/).
-
-#### Table of Contents
-
-- [Launch a development server](#launch-a-development-server)
-- [Create your custom theme](#create-your-custom-theme)
-- [Create a production-ready build](#create-a-production-ready-build)
-- [Deploy](#deploy)
-
-### Launch a development server
+Run:
 
 ```
-npx frontity dev
+❯ npx vercel
+Need to install the following packages:
+  vercel
+Ok to proceed? (y) y
+Vercel CLI 24.1.0
+? Set up and deploy “~/tmp/my-first-frontity-project”? [Y/n] y
+? Which scope do you want to deploy to? ilya-south
+? Link to existing project? [y/N] n
+? What’s your project’s name? my-first-frontity-project
+? In which directory is your code located? ./
+🔗  Linked to ilya-south/my-first-frontity-project (created .vercel and added it to .gitignore)
+🔍  Inspect: https://vercel.com/ilya-south/my-first-frontity-project/GvhrpHmvJKQ26zVKnMHwNFFzvvVD [17s]
+The deployment has been canceled.
 ```
 
-Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
-
-The site will automatically reload if you make changes inside the `packages` folder. You will see the build errors in the console.
-
-> Have a look at our [Quick Start Guide](https://docs.frontity.org/getting-started/quick-start-guide)
-
-### Create your custom theme
+the deployment will stuck/loop with:
 
 ```
-npx frontity create-package your-custom-theme
+[15:07:40.149] Retrieving list of deployment files...
+[15:07:41.875] Downloading 27 deployment files...
+[15:07:43.027] Looking up build cache...
+[15:07:43.075] Build Cache not found
+[15:07:43.332] Warning: Due to "engines": { "node": ">=10.0.0" } in your `package.json` file, the Node.js Version defined in your Project Settings ("16.x") will not apply. Learn More: http://vercel.link/node-version
+[15:07:43.334] Running "vercel build"
+[15:07:43.797] Vercel CLI 24.2.1 build (beta) — https://vercel.com/feedback
+[15:07:43.893] ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+[15:07:43.894] │ WARN! Due to `builds` existing in your configuration file, the Build and Development Settings defined in your Project Settings will not apply. Learn More: https://vercel.link/unused-build-settings │
+[15:07:43.894] └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+[15:07:44.246] yarn add v1.22.17
+[15:07:44.268] info No lockfile found.
+[15:07:44.289] [1/4] Resolving packages...
+[15:07:45.011] warning @frontity/now > @now/node-bridge@1.3.1: "@now/node-bridge" is deprecated and will stop receiving updates January 2021. Please use "@vercel/node-bridge" instead.
+[15:07:45.012] [2/4] Fetching packages...
+[15:07:45.133] [3/4] Linking dependencies...
+[15:07:45.134] warning " > @frontity/now@1.2.0" has unmet peer dependency "@now/build-utils@^0.9.4".
+[15:07:45.206] [4/4] Building fresh packages...
+[15:07:45.210] success Saved lockfile.
+[15:07:45.216] success Saved 3 new dependencies.
+[15:07:45.217] info Direct dependencies
+[15:07:45.217] ├─ @frontity/now@1.2.0
+[15:07:45.217] └─ @vercel/build-utils@2.17.0
+[15:07:45.217] info All dependencies
+[15:07:45.217] ├─ @frontity/now@1.2.0
+[15:07:45.217] ├─ @now/node-bridge@1.3.1
+[15:07:45.217] └─ @vercel/build-utils@2.17.0
+[15:07:45.219] Done in 0.98s.
+[15:07:45.456] yarn add v1.22.17
+[15:07:45.498] [1/4] Resolving packages...
+[15:07:45.684] [2/4] Fetching packages...
+[15:07:45.692] [3/4] Linking dependencies...
+[15:07:45.693] warning " > @frontity/now@1.2.0" has unmet peer dependency "@now/build-utils@^0.9.4".
+[15:07:45.721] [4/4] Building fresh packages...
+[15:07:45.727] success Saved 2 new dependencies.
+[15:07:45.727] info Direct dependencies
+[15:07:45.727] ├─ @frontity/now@1.2.0
+[15:07:45.727] └─ @vercel/build-utils@2.17.0
+[15:07:45.728] info All dependencies
+[15:07:45.728] ├─ @frontity/now@1.2.0
+[15:07:45.728] └─ @vercel/build-utils@2.17.0
+[15:07:45.729] Done in 0.28s.
+[15:07:45.963] yarn add v1.22.17
+[15:07:46.006] [1/4] Resolving packages...
+[15:07:46.192] [2/4] Fetching packages...
+[15:07:46.201] [3/4] Linking dependencies...
+[15:07:46.201] warning " > @frontity/now@1.2.0" has unmet peer dependency "@now/build-utils@^0.9.4".
+[15:07:46.228] [4/4] Building fresh packages...
+[15:07:46.234] success Saved 2 new dependencies.
+[15:07:46.234] info Direct dependencies
+[15:07:46.234] ├─ @frontity/now@1.2.0
+[15:07:46.234] └─ @vercel/build-utils@2.17.0
+[15:07:46.234] info All dependencies
+[15:07:46.234] ├─ @frontity/now@1.2.0
+[15:07:46.234] └─ @vercel/build-utils@2.17.0
+[15:07:46.236] Done in 0.28s.
+[15:07:46.475] yarn add v1.22.17
+...
 ```
 
-Use the command `npx frontity create-package` to create a new package that can be set in your `frontity.settings.js` as your theme.
+For more details, see <https://github.com/frontity/now-builder/issues/33>.
 
-> Have a look at our blog post [How to Create a React WordPress Theme in 30 Minutes](https://frontity.org/blog/how-to-create-a-react-theme-in-30-minutes/)
-
-### Create a production-ready build
-
-```
-npx frontity build
-```
-
-Builds the app for production to the `build` folder.
-
-This will create a `/build` folder with a `server.js` (a [serverless function](https://vercel.com/docs/v2/serverless-functions/introduction)) file and a `/static` folder with all your javascript files and other assets.
-
-Your app is ready to be deployed.
-
-> Get more info about [Frontity's architecture](https://docs.frontity.org/architecture)
-
-### Deploy
-
-With the files generated in the _build_ you can deploy your project.
-
-#### As a node app
-
-Use `npx frontity serve` to run it like a normal Node app.
-
-This command generates (and runs) a small web server that uses the generated `server.js` and `/static` to serve your content.
-
-#### As a serverless service
-
-Upload your `static` folder to a CDN and your `server.js` file to a serverless service, like Vercel or Netlify.
-
-> Get more info about [how to deploy](https://docs.frontity.org/deployment) a Frontity project
-
----
-
-## Frontity Community
-
-[![Community Forum Topics](https://img.shields.io/discourse/topics?color=blue&label=community%20forum&server=https%3A%2F%2Fcommunity.frontity.org%2F)](https://community.frontity.org/) [![Twitter: frontity](https://img.shields.io/twitter/follow/frontity?style=social)](https://twitter.com/frontity) [![Frontity GitHub Stars](https://img.shields.io/github/stars/frontity/frontity?style=social)](https://github.com/frontity/frontity)
-
-👋 &nbsp;We'd love for you to be part of the Frontity community. There are a variety of different ways in which you can find more information about the project, join in discussions about it, and also get involved:
-
-- **[Learn Frontity](https://frontity.org/learn/)**: in this page you can find Frontity's primary learning resources, including documentation resources, example projects, videos, and more.
-- **[Community forum](https://community.frontity.org/)**: Frontity's forum is a great place to ask questions, help fellow Frontity users, and share your projects. It's also where you can keep track of the development work, join feature discussions, and collaborate on building Frontity itself.
-- **[GitHub](https://github.com/frontity/frontity)**: for bug reports and code contributions. Questions are answered in the community forum.
-
-If you're looking for news and updates about Frontity, [Twitter](https://twitter.com/frontity) and the [blog](https://frontity.org/blog/) are pretty good places to start. You can also join the **[Frontity Newsletter](https://frontity.org/newsletter/)** and stay updated on new releases and features, learning resources, and community news.
-
-### Contributing
-
-Frontity welcomes contributions in all forms. There are many different ways to support the project. Check out the **[How to contribute](https://docs.frontity.org/contributing/how-to-contribute)** page for ideas on contributing and helping make Frontity better.
